@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css'
-import './index.css'
+import SingleCard from './SingleCard.jsx';
+
 const cardImages = [
   {"src": "/img/burger.png"},
   {"src": "/img/cheese.png"},
@@ -29,21 +30,15 @@ function App() {
     setCards(shuffledCards)
     setTurns(0)
   }
-  console.log(cards, turns);
+
   return (
     <>
       <div className="app" > 
         <h1> 💫magic match💫 </h1>
         <button onClick={shuffleCards} > new game </button> 
         <div className="card-grid" >
-          {cards.map( card => (
-             <div className="card" key={card.id}>
-                <div> 
-                  <img className="front" src={card.src} alt="front-image" />
-                  <img className="back" src="/img/background3new.jpg" alt="back-image" />
-                </div>
-             </div>
-          ))}
+          {cards.map( card => ( 
+          <SingleCard key={card.id} card={card} /> ))}
         </div>
       </div>
     </>
