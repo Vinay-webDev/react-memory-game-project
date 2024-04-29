@@ -16,7 +16,13 @@ const cardImages = [
 function App() {
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
-  /* i need a function which will need do three things for us
+  /*2. need a state to check or to store choices of cards to do that*/
+  const [choiceOne, setChoiceOne] = useState(null);
+  const [choiceTwo, setChoiceTwo] = useState(null);
+  /* 3. user gonna click on SingleCard component
+  so which needs a click event */
+
+  /* 1. i need a function which will need do three things for us
      ==>> need to duplicate cards
      ==>> need to shuffle them randomly
      ==>> need to give random id */
@@ -30,7 +36,20 @@ function App() {
     setCards(shuffledCards)
     setTurns(0)
   }
-
+  /* 6. to create handleChoice function
+  ***remeber this function will takes in card as argument *** */
+  function handleChoice(card) {
+    //console.log(card);
+    /* 9. we could check what ChoiceOne is 
+    inside this function,
+    ===>>> if it has a value it means it we 
+    already have a choice one 
+    ===>>> if it doesn't have a value means 
+    we don't still don't have choiceOne */
+    choiceOne? setChoiceTwo(card) : setChoiceOne(card);
+  }
+ /* 7. pass in this function as argument to the 
+ SingleCard component */
   return (
     <>
       <div className="app" > 
@@ -38,7 +57,11 @@ function App() {
         <button onClick={shuffleCards} > new game </button> 
         <div className="card-grid" >
           {cards.map( card => ( 
-          <SingleCard key={card.id} card={card} /> ))}
+          <SingleCard 
+                     key={card.id} 
+                     card={card}
+                      handleChoice={handleChoice}
+                     /> ))}
         </div>
       </div>
     </>
@@ -46,3 +69,17 @@ function App() {
 }
 
 export default App
+
+
+
+
+
+
+
+
+
+
+
+
+
+

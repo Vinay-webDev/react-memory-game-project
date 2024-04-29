@@ -13,7 +13,7 @@ button {
     cursor: pointer;
 }
 button:hover {
-    background-color:hsl(287, 100%, 27%);
+    background-color:hsl(296, 100%, 30%);
 }
 .card-grid {
     margin-top: 40px;
